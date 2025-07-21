@@ -52,9 +52,44 @@ std::string CheckBal(int Bal)
   return Green("Current Ballance : ") + Green(Bal); 
 }
 
-std::string choises()
+void choises()
 {
-  
+  std::cout << "check Ballance : 1" << std::endl; 
+  std::cout << "exit : 2" << std::endl;
+  std::cout << "roulet : 3";
+}
+
+int roulet(int &bal)
+{
+  char x[1];
+  int amount;
+  std::cout << "How much u betting?" << std::endl;
+  std::cout << "all (y/n) : ";
+  std::cin >> x;
+  if (x == "y") {
+    int random = rand() % 2;
+    std::cout << "colour [r]ed or [b]lack (1 or 2) ";
+    int y;
+    std::cin >> y;
+    if (y == 1) {
+      if ((y-1) == random)
+      {
+        std::cout << " it landed on your colour !! \n";
+        return bal = (bal*2);
+      }
+      else {
+        std::cout << ":( landed on different colour \n";
+        return bal -= bal;
+      }
+    }
+    
+
+  } 
+  else {
+    std::cout << "amount : ";
+    std::cin >> amount;
+    
+  }
 }
 
 int main ()
@@ -69,6 +104,20 @@ int main ()
     int choise;
     choises();
     std::cin >> choise;
+    
+    switch (choise)
+    {
+      case 1:
+        CheckBal(Bal);
+        break;
+      case 2:
+        return false;
+        break;
+      case 3:
+        roulet(Bal);
+        break;
+    }
+
   }
 
 
